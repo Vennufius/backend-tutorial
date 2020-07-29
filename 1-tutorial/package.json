@@ -1,11 +1,11 @@
 {
   "name": "backend-tutorial",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "license": "MIT",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js ",
+    "dev": "nodemon server.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },

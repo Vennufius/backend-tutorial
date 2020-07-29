@@ -11,7 +11,7 @@ if (process.env.NODE_ENV !== 'production') {
 app.use(express.json());
 
 app.get('/', async (req, res, next) => {
-  const { message } = req.query; // query parametru urlissa: google.com?message=Hello World (välilyönnit saattaa myös olla unicode %20: message=Hello%20World)
+  const { message } = req.query; // query parametru urlissa: google.com?message=Hello World&age=10 (välilyönnit saattaa myös olla unicode %20: message=Hello%20World)
   // const message = req.query.message; Sama asia. "Destructuring" https://hacks.mozilla.org/2015/05/es6-in-depth-destructuring/
 
   if (message) return res.json({ message: `Your message was: ${message}.` });

@@ -27,6 +27,17 @@ router.get('/:id', async (req, res, next) => {
   return next(error);
 });
 
+router.get('/name/:name', async (req, res, next) => {
+  const { name } = req.params;
+
+  const user = db.users.find((dbUser) => dbUser.name === name);
+  if (user) return res.json({ user, message: 'kivaa 🥳' });
+
+  const error = new Error('User not found.');
+  res.status(404);
+  return next(error);
+});
+
 // Create
 router.post('/', async (req, res, next) => {
   const { name, age } = req.body;
@@ -56,7 +67,7 @@ router.post('/change-name', async (req, res, next) => {
     return next(error);
   }
 
-  const user = db.users.find((dbUser) => dbUser.id === id);
+  const user = db.users.find((dbUser) => dbUser.id === +id);
   if (!user) {
     const error = new Error('User not found.');
     res.status(404);
