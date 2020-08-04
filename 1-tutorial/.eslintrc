@@ -40,7 +40,7 @@
         "allowTemplateLiterals": true
       }
     ],
-    "semi": [2, "always"]
+    "semi": 2
   },
 
   "parser": "babel-eslint"
