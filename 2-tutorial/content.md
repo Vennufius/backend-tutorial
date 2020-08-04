@@ -8,3 +8,4 @@
   - [sqlite3](https://www.npmjs.com/package/sqlite3)
   - [knex](http://knexjs.org/)
   - [uuid](https://www.npmjs.com/package/uuid)
+  - [joi](https://www.npmjs.com/package/joi)
