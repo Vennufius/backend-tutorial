@@ -1,4 +1,3 @@
-
 exports.up = function (knex) {
   return knex.schema.createTable('users', (table) => {
     table.string('uuid', 36).notNullable().primary();

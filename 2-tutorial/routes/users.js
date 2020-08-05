@@ -37,8 +37,9 @@ router.post('/', async (req, res, next) => {
   try {
     const uuid = uuidv4();
     await userSchema.validateAsync(req.body);
-    await queries.insertUser({ uuid, name, age });
-    return res.json({ uuid, name, age });
+    const newUser = { uuid, name, age };
+    await queries.insertUser(newUser);
+    return res.json(newUser);
   } catch (error) {
     res.status(422);
     return next(error);
@@ -51,8 +52,9 @@ router.put('/:uuid', async (req, res, next) => {
   const { name, age } = req.body;
   try {
     await userSchema.validateAsync(req.body);
-    const userFound = await queries.updateUser(uuid, { name, age });
-    if (userFound) return res.json({ name, age });
+    const updatedValues = { name, age };
+    const userFound = await queries.updateUser(uuid, updatedValues); // palauttaa 0 (ei löydy käyttäjää) tai 1 (kun käyttäjä löytyy)
+    if (userFound) return res.json(updatedValues);
     throw new NotFoundError('User not found.');
   } catch (error) {
     if (error instanceof NotFoundError) {

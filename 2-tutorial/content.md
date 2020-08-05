@@ -4,7 +4,7 @@
   - Considering audit results
   - Fixing audit
 - [Updating packages](https://www.npmjs.com/package/npm-check-updates)
-- Taking a look at used packages (Installing packages)
+- Taking a look at used packages (Installing packages)(yarn add/npm install)
   - [sqlite3](https://www.npmjs.com/package/sqlite3)
   - [knex](http://knexjs.org/)
   - [uuid](https://www.npmjs.com/package/uuid)

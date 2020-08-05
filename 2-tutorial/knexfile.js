@@ -7,5 +7,5 @@ module.exports = {
       filename: './test.sqlite'
     },
     useNullAsDefault: true,
-  },
+  }
 };
