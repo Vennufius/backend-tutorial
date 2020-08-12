@@ -3,8 +3,7 @@ const knex = require('./knex');
 module.exports = {
   getAllUsers() {
     // valitaan vain uuid ja username, sillä ei haluta näyttää käyttäjälle password hashia.
-    // return knex('users').select('uuid', 'username');
-    return knex('users');
+    return knex('users').select('username');
   },
   async getOneUser(uuid) {
     const [user] = await knex('users').select('uuid', 'username').where({ uuid });

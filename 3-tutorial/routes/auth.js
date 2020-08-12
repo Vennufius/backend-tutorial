@@ -17,12 +17,12 @@ router.post('/register', async (req, res, next) => {
   const { username, password } = req.body;
 
   try {
-    const uuid = uuidv4();
     await userSchema.validateAsync(req.body);
     const user = await queries.getOneUserWithUsername(username);
     if (user) throw new Error('Username taken.');
+    const uuid = uuidv4();
     // Crypt the password (Unlike facebook 🙃)
-    const hash = await bcrypt.hash(password, process.env.SALT);
+    const hash = await bcrypt.hash(password, +process.env.SALT);
     // We save the password hash as binary to the db. (Katso: <date>create-users.js)
     const newUser = { uuid, username: username.toLowerCase(), password: hash };
     await queries.insertUser(newUser);

@@ -3,7 +3,7 @@ const queries = require('../db/queries');
 
 function checkTokenSetUser(req, res, next) {
   const authHeader = req.headers.authorization;
-  const token = authHeader && authHeader.split(' ')[1];
+  const token = authHeader && authHeader.split(' ')[1]; // Bearer asdalksdjklalksdlajsd
 
   if (!token) return next();
   // check token against the blacklist

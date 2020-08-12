@@ -20,9 +20,9 @@ router.get('/', async (req, res, next) => {
 
 // Read One
 router.get('/me', async (req, res, next) => {
-  const { uuid } = req.user;
+  const { user_uuid } = req.user;
 
-  const user = await queries.getOneUser(uuid);
+  const user = await queries.getOneUser(user_uuid);
   if (user) return res.json(user);
 
   const error = new NotFoundError('User not found.');
@@ -58,7 +58,7 @@ router.put('/password', async (req, res, next) => {
     const match = await bcrypt.compare(oldPassword, user.password.toString()); // check if the user password matches the password in db
     if (!match) throw new Error('Unauthorized');
 
-    const hash = await bcrypt.hash(newPassword, process.env.SALT);
+    const hash = await bcrypt.hash(newPassword, +process.env.SALT);
     const updatedValues = { password: hash };
     const userFound = await queries.updateUser(uuid, updatedValues); // palauttaa 0 (ei löydy käyttäjää) tai 1 (kun käyttäjä löytyy)
     if (userFound) return res.json(updatedValues);
